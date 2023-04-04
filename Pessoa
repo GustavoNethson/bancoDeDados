@@ -1,0 +1,20 @@
+CREATE TABLE Aluno(
+	nome_aluno varchar(150) PRIMARY KEY NOT NULL,
+	RA_aluno varchar(150),
+	cidade varchar(150),
+	nome_cidade varchar(150),
+	CONSTRAINT fk_cidade FOREIGN KEY (nome_cidade) REFERENCES Residencia (nome_cidade)
+);
+''
+CREATE TABLE Residencia(
+	nome_cidade varchar(150) PRIMARY KEY NOT NULL,
+	nome_rua varchar(150),
+	numero_casa int
+);
+
+DROP TABLE Aluno;
+SELECT * FROM Residencia 
+SELECT * FROM Aluno 
+
+INSERT INTO Residencia VALUES('Cascavel', 'Rua do Djanho', '666');
+INSERT INTO Aluno VALUES('Gostoso', 00173525);
