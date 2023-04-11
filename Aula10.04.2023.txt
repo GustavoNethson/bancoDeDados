@@ -1,0 +1,83 @@
+CREATE TABLE Departamento(
+	id_Departamento INT PRIMARY KEY NOT null,
+	nome_Departamento VARCHAR(150),
+	ativo VARCHAR(150)
+);
+
+CREATE TABLE Colaborador(
+	id_Colaborador INT PRIMARY KEY NOT null,
+	nome_Colaborador VARCHAR(150),
+	cpf VARCHAR(150),
+	data_Nacimento DATE,
+	data_Admissao DATE,
+	departamento_Colaborador INT,
+	CONSTRAINT fk_departamento_Colaborador FOREIGN KEY (departamento_Colaborador) REFERENCES Departamento (id_Departamento)	
+);
+
+CREATE TABLE ControleEPI(
+	id_Controle_EPI INT PRIMARY KEY NOT null,
+	descricao VARCHAR(150),
+	data_Fabricacao DATE,
+	data_Vencimento DATE,	
+	departamento_EPI INT,
+	CONSTRAINT fk_departamento_EPI FOREIGN KEY (departamento_EPI) REFERENCES Departamento (id_Departamento)
+);
+
+CREATE TABLE EntregaEPI(
+	id_EntregaEPI INT PRIMARY KEY NOT null,
+	data_Entrega DATE,
+	id_Colaborador INT,
+	id_EPI INT,
+	CONSTRAINT fk_id_Colaborador FOREIGN KEY (id_Colaborador) REFERENCES Colaborador (id_Colaborador),
+	CONSTRAINT fk_id_EPI FOREIGN KEY (id_EPI) REFERENCES ControleEPI (id_Controle_EPI)
+);
+
+DROP TABLE Colaborador;
+DROP TABLE Departamento;
+DROP TABLE ControleEPI;
+DROP TABLE EntregaEPI;
+
+SELECT * FROM Departamento
+SELECT * FROM Colaborador
+SELECT * FROM ControleEPI
+SELECT * FROM EntregaEPI
+
+INSERT INTO Departamento VALUES(01, 'Vendas', 'Ativo');
+INSERT INTO Departamento VALUES(02, 'Estoque', 'Ativo');
+INSERT INTO Departamento VALUES(03, 'Compras', 'Ativo');
+INSERT INTO Departamento VALUES(04, 'Contabilidade', 'Ativo');
+INSERT INTO Departamento VALUES(05, 'Administração', 'Ativo');
+INSERT INTO Departamento VALUES(06, 'Gerencia', 'Ativo');
+
+INSERT INTO Colaborador VALUES(00001,'Jhonathan','123.666.789-10', '01-02-1980', '28-02-2023', 1);
+INSERT INTO Colaborador VALUES(00002,'Joseph','123.666.789-15', '01-05-1990', '15-03-2023', 2);
+INSERT INTO Colaborador VALUES(00003,'Bino','123.666.789-20', '01-06-1984', '30-10-2022', 3);
+INSERT INTO Colaborador VALUES(00004,'Thomas','123.666.789-25', '01-07-1993', '26-02-2021', 4);
+INSERT INTO Colaborador VALUES(00005,'Simas','123.666.789-30', '01-02-1994', '28-03-2020', 5);
+INSERT INTO Colaborador VALUES(00006,'Silas','123.666.987-35', '01-01-1985', '05-04-2023', 6);
+INSERT INTO Colaborador VALUES(00007,'Kelin','123.666.789-40', '01-08-1996', '01-05-2021', 1);
+INSERT INTO Colaborador VALUES(00008,'Paula','123.666.798-45', '01-09-1999', '05-06-2021', 2);
+INSERT INTO Colaborador VALUES(00009,'Paula','123.666.978-50', '01-01-1998', '06-08-2020', 3);
+INSERT INTO Colaborador VALUES(00010,'Paulu','123.666.799-55', '01-11-1994', '28-02-2021', 4);
+INSERT INTO Colaborador VALUES(00011,'Cuca','123.666.978-60', '01-12-1992', '29-01-2022', 5);
+INSERT INTO Colaborador VALUES(00012,'Mika','123.666.789-65', '01-12-1998', '30-06-2022', 6);
+
+INSERT INTO ControleEPI VALUES(1001, );
+INSERT INTO ControleEPI VALUES(1002,);
+INSERT INTO ControleEPI VALUES(1003,);
+INSERT INTO ControleEPI VALUES(1004,);
+INSERT INTO ControleEPI VALUES(1005,);
+INSERT INTO ControleEPI VALUES(1006,);
+INSERT INTO ControleEPI VALUES(1007,);
+INSERT INTO ControleEPI VALUES(1008,);
+INSERT INTO ControleEPI VALUES(1009,);
+INSERT INTO ControleEPI VALUES(1010,);
+
+INSERT INTO EntregaEPI VALUES();
+INSERT INTO EntregaEPI VALUES();
+INSERT INTO EntregaEPI VALUES();
+INSERT INTO EntregaEPI VALUES();
+INSERT INTO EntregaEPI VALUES();
+INSERT INTO EntregaEPI VALUES();
+INSERT INTO EntregaEPI VALUES();
+INSERT INTO EntregaEPI VALUES();
